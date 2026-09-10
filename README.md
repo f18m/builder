@@ -26,11 +26,11 @@ Verifies Cosign signatures on container images with up to 5 retries and exponent
 
 The following example workflow builds multi-arch container images when a GitHub release is published. It prepares a build matrix, builds per-architecture images in parallel (e.g., `ghcr.io/owner/amd64-my-image`, `ghcr.io/owner/aarch64-my-image`), and then combines them into a single multi-arch manifest (`ghcr.io/owner/my-image`).
 
-> 📝 Replace `[version]` with the desired tag from the [releases](https://github.com/home-assistant/builder/releases) page.
+> [!NOTE]
+> Replace `[version]` with the desired tag from the [releases](https://github.com/home-assistant/builder/releases) page.
 
-> 📝 This workflow works also for `push` triggers in case you want to build and publish an image on every git push 
-> but you may want to change the `image-tags` because on `push` triggers the `${{ github.event.release.tag_name }}`
-> will expand to an empty string.
+> [!NOTE]
+> This workflow also supports `push` triggers to build and publish an image on every Git push. In that case, update `image-tags` and `version`, because `${{ github.event.release.tag_name }}` expands to an empty string for `push` events.
 
 
 ```yaml
